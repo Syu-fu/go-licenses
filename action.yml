@@ -1,0 +1,25 @@
+name: "go-licenses"
+author: "Syu-fu"
+description: "Check go-licenses"
+
+branding:
+  icon: package
+  color: blue
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
+      with:
+        go-version: "1.21"
+
+    - run: go install github.com/google/go-licenses@latest
+      shell: bash
+
+    - name: Check licenses
+      run: go-licenses check ./...
+      shell: bash
+
+    - name: Get licenses list
+      run: go-licenses csv ./...
+      shell: bash
