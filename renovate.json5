@@ -1,38 +1,38 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "automerge": true,
-  "extends": [
-    "config:recommended",
-    "config:best-practices"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  automerge: true,
+  extends: [
+    'config:recommended',
+    'config:best-practices',
   ],
-  "major": {
-    "automerge": false
+  major: {
+    automerge: false,
   },
-  "timezone": "Asia/Tokyo",
-  "branchConcurrentLimit": 0,
-  "prConcurrentLimit": 0,
-  "prHourlyLimit": 0,
-  "packageRules": [
+  timezone: 'Asia/Tokyo',
+  branchConcurrentLimit: 0,
+  prConcurrentLimit: 0,
+  prHourlyLimit: 0,
+  packageRules: [
     {
-      "matchManagers": [
-        "github-actions"
+      matchManagers: [
+        'github-actions',
       ],
-      "versioning": "semver"
+      versioning: 'semver',
     },
   ],
-  "customManagers": [
+  customManagers: [
     {
-      "customType": "regex",
-      "datasourceTemplate": "github-tags",
-      "depNameTemplate": "golang/go",
-      "extractVersionTemplate": "^go(?<version>.*)$",
-      "fileMatch": [
-        "^action\\.ya?ml$"
+      customType: 'regex',
+      datasourceTemplate: 'github-tags',
+      depNameTemplate: 'golang/go',
+      extractVersionTemplate: '^go(?<version>.*)$',
+      managerFilePatterns: [
+        '/^action\\.ya?ml$/',
       ],
-      "matchStrings": [
-        "go-version: \"(?<currentValue>.*)\"",
+      matchStrings: [
+        'go-version: "(?<currentValue>.*)"',
       ],
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)$"
-    }
-  ]
+      versioningTemplate: 'regex:^(?<major>\\d+)\\.(?<minor>\\d+)$',
+    },
+  ],
 }
